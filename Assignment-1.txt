@@ -1,0 +1,13 @@
+1. SELECT InvoiceId, CustomerId, Total FROM invoices ORDER BY CustomerId, Total DESC;
+
+2. SELECT InvoiceId, CustomerId, Total FROM invoices ORDER BY Total DESC, CustomerId;
+
+3. In the first query, the results are sorted first by CustomerId and then Total. In other words; for example, first, the results in which CustomerId = 1 are shown and then total dollar amount for each invoice among the CustomerId1 are shown, and then comes the results in which CustomerId=2 and so on. In the second query, the results are sorted by the total dollar amount for each invoice no matter what the CustomerId is.
+
+4. SELECT * FROM invoices WHERE total >= 10 LIMIT 10;
+
+5. SELECT * FROM invoices WHERE total < 10 LIMIT 5;
+
+6. SELECT name FROM tracks WHERE name LIKE 'B%s';
+
+7. SELECT * FROM invoices WHERE BillingCountry in ('USA', 'Norway','Germany','Canada') AND InvoiceDate BETWEEN '2010-01-01' AND '2011-01-01' ORDER BY InvoiceDate DESC;
