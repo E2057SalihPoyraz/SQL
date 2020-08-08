@@ -1,0 +1,63 @@
+Single-Row Subqueries:
+
+1. select TrackId, Name, max(Milliseconds) FROM tracks;
+
+2. select TrackId, Name, min(Milliseconds) FROM tracks;
+
+3. select TrackId, Name, Bytes, (select AVG (Bytes) from tracks)as General_Average FROM tracks WHERE Bytes > (select AVG (Bytes) from tracks) ORDER BY Bytes DESC ;  
+
+Multiple-Row Subqueries:
+
+1. select CustomerID, FirstName, LastName FROM customers WHERE SupportRepId in ( select EmployeeId from employees where FirstName = 'Jane' and LastName='Peacock' or FirstName= 'Margaret' and LastName='Park') ;  
+
+2. select customers.CustomerID, customers.FirstName, customers.LastName FROM customers INNER join employees on customers.SupportRepId= employees.EmployeeId where employees.FirstName = 'Jane' and employees.LastName='Peacock' or employees.FirstName= 'Margaret' and employees.LastName='Park' ;  
+
+DDL (CREATE, ALTER, DELETE) and DML (SELECT, INSERT, UPDATE, DELETE) Statements:
+
+1. CREATE TABLE courses (
+
+    CourseId INT PRIMARY KEY, 
+
+    CourseName TEXT NOT NULL, 
+
+    EmployeeId INT, CoursePrice INT, 
+
+    FOREIGN KEY (EmployeeId)
+
+   REFERENCES employees (EmployeeId) 
+
+);
+
+2. INSERT INTO courses (CourseId, CourseName, EmployeeId, CoursePrice)
+
+VALUES (101, 'HTML',1, 100),
+
+    (202, 'CSS',2, 200),
+
+    (303, 'Jira',2, 300),
+
+      (404, 'Git',3, 400),
+
+      (505, 'Github',3, 400),
+
+      (606, 'Linux',4, 400),
+
+      (707, 'Python',5, 400),
+
+      (808, 'SQL',6, 400),
+
+      (909, 'Agile',7, 600),
+
+      (1010, 'SDLC',8, 800) ;
+
+3. DELETE FROM courses
+
+WHERE CourseId = 1010;
+
+4. ALTER TABLE courses
+
+ADD StartDate TEXT NOT NULL DEFAULT '0';
+
+5. ALTER TABLE courses DROP COLUMN CoursePrice;
+
+6. DROP TABLE courses;
